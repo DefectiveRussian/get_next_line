@@ -6,9 +6,11 @@
 /*   By: dekhamid <dekhamid@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 11:25:46 by dekhamid          #+#    #+#             */
-/*   Updated: 2024/12/12 12:41:12 by dekhamid         ###   ########.fr       */
+/*   Updated: 2024/12/12 13:48:58 by dekhamid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "get_next_line.h"
 
 char	*get_next_line(int fd)
 {

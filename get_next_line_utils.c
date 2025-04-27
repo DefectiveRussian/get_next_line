@@ -22,51 +22,43 @@ size_t	ft_strlen(const char *str)
 	return (x);
 }
 
-char	*ft_strchr(const char *s, int c)
+char	*str_join2(char* first, char* second)
 {
-	while (*s)
+	int		x;
+	int		y;
+	int		i;
+	char*	dest;
+
+	i = 0;
+	x = str_len(first);
+	y = str_len(second);
+	dest = malloc(x + y + 1);
+	while (first && first[i] != 0)
 	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s++;
+		dest[i] = first[i];
+		i++;
 	}
-	if (*s == (char)c)
-		return ((char *)s);
-	else
-		return (0);
+	i = 0;
+	while (second && second[i] != 0)
+	{
+		dest[i + x] = second[i];
+		i++;
+	}
+	free(first);
+	dest[i + x] = '\0';
+	return(dest);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+int	str_chr(char* str)
 {
-	int		one;
-	int		two;
-	char	*dest;
+	int	counter;
 
-	one = ft_strlen(s1);
-	two = ft_strlen(s2);
-	dest = malloc(sizeof(char) * (one + two + 1));
-	if (dest == 0)
-		return (0);
-	ft_strlcpy(dest, s1, one + 1);
-	ft_strlcat(dest, s2, one + two + 1);
-	return (dest);
-}
-
-void	*ft_calloc(size_t num, size_t dim)
-{
-	void		*ptr;
-	char		*d;
-	size_t		x;
-
-	ptr = malloc(num * dim);
-	if (ptr == 0)
-		return (0);
-	d = (char *)ptr;
-	x = 0;
-	while (x < dim * num)
+	counter = 0;
+	while (str && str[counter] != '\0' )
 	{
-		d[x] = '\0';
-		x++;
+		if (str[counter] == '\n')
+			return(1);
+		counter++;
 	}
-	return (ptr);
+	return (0);
 }

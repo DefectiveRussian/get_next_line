@@ -6,7 +6,7 @@
 /*   By: dekhamid <dekhamid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 11:25:46 by dekhamid          #+#    #+#             */
-/*   Updated: 2025/04/28 16:11:26 by dekhamid         ###   ########.fr       */
+/*   Updated: 2025/04/28 20:43:39 by dekhamid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*reverse_separator(char *str)
 	int		j;
 	int		len;
 
-	len = str_len(str);
+	len = ft_strlen(str);
 	i = 0;
 	j = 0;
 	while (str[i] && str[i] != '\n')
@@ -68,9 +68,10 @@ char	*read_and_split(int fd)
 {
 	int			bytes_read;
 	char		*buffer;
-	static char	*str = NULL;
+	static char	*str;
 
-	buffer = malloc(11);
+	str = NULL;
+	buffer = malloc(BUFFER_SIZE);
 	if (buffer == NULL)
 		return (NULL);
 	bytes_read = 1;
@@ -101,14 +102,16 @@ char	*get_next_line(int fd)
 	str = read_and_split(fd);
 	result = separator(str);
 	str = reverse_separator(str);
+	free(str);
 	return (result);
 }
 
-/*int	main(void)
+int	main(void)
 {
-	int	fd = open("file.txt", O_RDONLY);
-	char *str = NULL;
+	int		fd;
+	char	*str = NULL;
 
+	fd = open("file.txt", O_RDONLY);
 	str = get_next_line(fd);
 	printf("%s", str);
 	free(str);
@@ -118,6 +121,5 @@ char	*get_next_line(int fd)
 	str = get_next_line(fd);
 	printf("%s", str);
 	free(str);
-
 	return (0);
-}*/
+}

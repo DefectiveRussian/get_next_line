@@ -6,7 +6,7 @@
 /*   By: dekhamid <dekhamid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 11:25:53 by dekhamid          #+#    #+#             */
-/*   Updated: 2025/04/28 16:12:02 by dekhamid         ###   ########.fr       */
+/*   Updated: 2025/04/28 19:27:12 by dekhamid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t	ft_strlen(const char *str)
 	size_t	x;
 
 	x = 0;
+	if (str == NULL)
+		return(x);
 	while (str[x] != '\0')
 		x++;
 	return (x);
@@ -30,8 +32,8 @@ char	*str_join2(char *first, char *second)
 	char	*dest;
 
 	i = 0;
-	x = str_len(first);
-	y = str_len(second);
+	x = ft_strlen(first);
+	y = ft_strlen(second);
 	dest = malloc(x + y + 1);
 	if (dest == NULL)
 		return (NULL);

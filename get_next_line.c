@@ -25,6 +25,8 @@ char	*separator(char* str)
 	if (str[i] == '\n')
 		i++;
 	kek = malloc(i + 1);
+	if (kek == NULL)
+		return (NULL);
 	while(j < i)
 	{
 		kek[j] = str[j];
@@ -50,6 +52,8 @@ char	*reverse_separator(char* str)
 		i++;
 	len = len - i;
 	kek = malloc(len + 2);
+	if (kek == NULL)
+		return (NULL);
 	while(j < len)
 	{
 		kek[j] = str[i + j];
@@ -67,6 +71,8 @@ char *read_and_split(int fd)
 	static char* 	str = NULL;
 
 	buffer = malloc(11);
+	if (buffer == NULL)
+		return (NULL);
 	bytes_read = 1;
 	while(bytes_read != 0)
 	{

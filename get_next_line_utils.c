@@ -33,6 +33,8 @@ char	*str_join2(char* first, char* second)
 	x = str_len(first);
 	y = str_len(second);
 	dest = malloc(x + y + 1);
+	if (dest == NULL)
+		return (NULL);
 	while (first && first[i] != 0)
 	{
 		dest[i] = first[i];

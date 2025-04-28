@@ -60,7 +60,7 @@ char	*reverse_separator(char* str)
 	return(kek);
 }
 
-char *read_and_split(fd)
+char *read_and_split(int fd)
 {
 	int		bytes_read;
 	char	*buffer;

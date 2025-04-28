@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dekhamid <dekhamid@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: dekhamid <dekhamid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 11:25:53 by dekhamid          #+#    #+#             */
-/*   Updated: 2024/12/12 14:34:27 by dekhamid         ###   ########.fr       */
+/*   Updated: 2025/04/28 15:27:13 by dekhamid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

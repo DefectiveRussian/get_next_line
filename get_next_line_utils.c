@@ -6,7 +6,7 @@
 /*   By: dekhamid <dekhamid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 11:25:53 by dekhamid          #+#    #+#             */
-/*   Updated: 2025/04/28 15:27:13 by dekhamid         ###   ########.fr       */
+/*   Updated: 2025/04/28 16:12:02 by dekhamid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ size_t	ft_strlen(const char *str)
 	return (x);
 }
 
-char	*str_join2(char* first, char* second)
+char	*str_join2(char *first, char *second)
 {
 	int		x;
 	int		y;
 	int		i;
-	char*	dest;
+	char	*dest;
 
 	i = 0;
 	x = str_len(first);
@@ -48,18 +48,18 @@ char	*str_join2(char* first, char* second)
 	}
 	free(first);
 	dest[i + x] = '\0';
-	return(dest);
+	return (dest);
 }
 
-int	str_chr(char* str)
+int	str_chr(char *str)
 {
 	int	counter;
 
 	counter = 0;
-	while (str && str[counter] != '\0' )
+	while (str && str[counter] != '\0')
 	{
 		if (str[counter] == '\n')
-			return(1);
+			return (1);
 		counter++;
 	}
 	return (0);

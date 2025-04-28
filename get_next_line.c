@@ -6,28 +6,28 @@
 /*   By: dekhamid <dekhamid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 11:25:46 by dekhamid          #+#    #+#             */
-/*   Updated: 2025/04/28 15:27:21 by dekhamid         ###   ########.fr       */
+/*   Updated: 2025/04/28 16:11:26 by dekhamid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*separator(char* str)
+char	*separator(char *str)
 {
-	char*	kek;
+	char	*kek;
 	int		i;
 	int		j;
 
 	i = 0;
 	j = 0;
-	while(str[i] && str[i] != '\n')
+	while (str[i] && str[i] != '\n')
 		i++;
 	if (str[i] == '\n')
 		i++;
 	kek = malloc(i + 1);
 	if (kek == NULL)
 		return (NULL);
-	while(j < i)
+	while (j < i)
 	{
 		kek[j] = str[j];
 		j++;
@@ -36,9 +36,9 @@ char	*separator(char* str)
 	return (kek);
 }
 
-char	*reverse_separator(char* str)
+char	*reverse_separator(char *str)
 {
-	char*	kek;
+	char	*kek;
 	int		i;
 	int		j;
 	int		len;
@@ -46,7 +46,7 @@ char	*reverse_separator(char* str)
 	len = str_len(str);
 	i = 0;
 	j = 0;
-	while(str[i] && str[i] != '\n')
+	while (str[i] && str[i] != '\n')
 		i++;
 	if (str[i] == '\n')
 		i++;
@@ -54,31 +54,31 @@ char	*reverse_separator(char* str)
 	kek = malloc(len + 2);
 	if (kek == NULL)
 		return (NULL);
-	while(j < len)
+	while (j < len)
 	{
 		kek[j] = str[i + j];
-		j++; 
+		j++;
 	}
 	kek[j] = '\0';
 	free(str);
-	return(kek);
+	return (kek);
 }
 
-char *read_and_split(int fd)
+char	*read_and_split(int fd)
 {
-	int		bytes_read;
-	char	*buffer;
-	static char* 	str = NULL;
+	int			bytes_read;
+	char		*buffer;
+	static char	*str = NULL;
 
 	buffer = malloc(11);
 	if (buffer == NULL)
 		return (NULL);
 	bytes_read = 1;
-	while(bytes_read != 0)
+	while (bytes_read != 0)
 	{
-		if(str_chr(str) == 1)
-			break;
-		bytes_read = read(fd, buffer, 10);
+		if (str_chr(str) == 1)
+			break ;
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read < 0)
 		{
 			free(buffer);
@@ -94,7 +94,7 @@ char *read_and_split(int fd)
 char	*get_next_line(int fd)
 {
 	char	*result;
-	char 	*str;
+	char	*str;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
@@ -104,7 +104,7 @@ char	*get_next_line(int fd)
 	return (result);
 }
 
-/*int	main()
+/*int	main(void)
 {
 	int	fd = open("file.txt", O_RDONLY);
 	char *str = NULL;

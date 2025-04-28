@@ -6,7 +6,7 @@
 /*   By: dekhamid <dekhamid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 11:25:55 by dekhamid          #+#    #+#             */
-/*   Updated: 2025/04/28 15:27:27 by dekhamid         ###   ########.fr       */
+/*   Updated: 2025/04/28 16:09:58 by dekhamid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 # endif
 
 char	*get_next_line(int fd);
-int		str_chr(char* str);
-char	*str_join2(char* first, char* second);
+int		str_chr(char *str);
+char	*str_join2(char *first, char *second);
 size_t	ft_strlen(const char *str);
 void	*ft_calloc(size_t num, size_t dim);
 

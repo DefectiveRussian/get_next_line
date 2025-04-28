@@ -6,7 +6,7 @@
 /*   By: dekhamid <dekhamid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 11:25:53 by dekhamid          #+#    #+#             */
-/*   Updated: 2025/04/28 19:27:12 by dekhamid         ###   ########.fr       */
+/*   Updated: 2025/04/28 22:02:03 by dekhamid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ size_t	ft_strlen(const char *str)
 
 	x = 0;
 	if (str == NULL)
-		return(x);
+		return (x);
 	while (str[x] != '\0')
 		x++;
 	return (x);

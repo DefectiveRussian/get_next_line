@@ -6,7 +6,7 @@
 /*   By: dekhamid <dekhamid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 11:25:46 by dekhamid          #+#    #+#             */
-/*   Updated: 2025/04/28 20:43:39 by dekhamid         ###   ########.fr       */
+/*   Updated: 2025/04/28 22:01:35 by dekhamid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*reverse_separator(char *str)
 	if (str[i] == '\n')
 		i++;
 	len = len - i;
-	kek = malloc(len + 2);
+	kek = malloc(len + 1);
 	if (kek == NULL)
 		return (NULL);
 	while (j < len)

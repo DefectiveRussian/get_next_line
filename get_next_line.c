@@ -60,7 +60,6 @@ char	*reverse_separator(char *str)
 		j++;
 	}
 	kek[j] = '\0';
-	free(str);
 	return (kek);
 }
 
@@ -68,9 +67,8 @@ char	*read_and_split(int fd)
 {
 	int			bytes_read;
 	char		*buffer;
-	static char	*str;
+	static char	*str = NULL;
 
-	str = NULL;
 	buffer = malloc(BUFFER_SIZE);
 	if (buffer == NULL)
 		return (NULL);

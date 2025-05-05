@@ -12,6 +12,14 @@
 
 #include "get_next_line.h"
 
+char	*handle_read_error(char *buffer, char *str, int bytes_read)
+{
+	free(buffer);
+	if (bytes_read < 0 || !str)
+		return (NULL);
+	return (str);
+}
+
 size_t	ft_strlen(const char *str)
 {
 	size_t	x;

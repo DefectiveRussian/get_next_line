@@ -14,77 +14,79 @@
 
 char	*separator(char *str)
 {
-	char	*kek;
 	int		i;
-	int		j;
+	char	*result;
 
 	i = 0;
-	j = 0;
-	while (str[i] && str[i] != '\n')
+	if (!str)
+		return (NULL);
+	while (str[i] != '\n' && str[i] != '\0')
 		i++;
 	if (str[i] == '\n')
 		i++;
-	kek = malloc(i + 1);
-	if (kek == NULL)
+	result = malloc(i + 1);
+	if (!result)
 		return (NULL);
-	while (j < i)
+	i = 0;
+	while (str[i] != '\n' && str[i] != '\0')
 	{
-		kek[j] = str[j];
-		j++;
+		result[i] = str[i];
+		i++;
 	}
-	kek[j] = '\0';
-	return (kek);
+	if (str[i] == '\n')
+		result[i++] = '\n';
+	result[i] = '\0';
+	return (result);
 }
 
 char	*reverse_separator(char *str)
 {
-	char	*kek;
 	int		i;
 	int		j;
-	int		len;
+	char	*result;
 
-	len = ft_strlen(str);
 	i = 0;
-	j = 0;
-	while (str[i] && str[i] != '\n')
+	while (str[i] != '\n' && str[i] != '\0')
 		i++;
-	if (str[i] == '\n')
-		i++;
-	len = len - i;
-	kek = malloc(len + 1);
-	if (kek == NULL)
+	if (str[i] == '\0')
 		return (NULL);
-	while (j < len)
+	i++;
+	j = 0;
+	while (str[i + j] != '\0')
+		j++;
+	result = malloc(j + 1);
+	if (!result)
+		return (NULL);
+	j = 0;
+	while (str[i + j] != '\0')
 	{
-		kek[j] = str[i + j];
+		result[j] = str[i + j];
 		j++;
 	}
-	kek[j] = '\0';
-	return (kek);
+	result[j] = '\0';
+	return (result);
 }
 
 char	*read_and_split(int fd)
 {
-	int			bytes_read;
-	char		*buffer;
-	static char	*str = NULL;
+	int		bytes_read;
+	char	*buffer;
+	char	*str;
 
-	buffer = malloc(BUFFER_SIZE);
+	str = NULL;
+	buffer = malloc(BUFFER_SIZE + 1);
 	if (buffer == NULL)
 		return (NULL);
 	bytes_read = 1;
-	while (bytes_read != 0)
+	while (bytes_read > 0)
 	{
-		if (str_chr(str) == 1)
-			break ;
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read < 0)
-		{
-			free(buffer);
-			return (NULL);
-		}
+		if (bytes_read <= 0)
+			return (handle_read_error(buffer, str, bytes_read));
 		buffer[bytes_read] = '\0';
 		str = str_join2(str, buffer);
+		if (!str || str_chr(str) == 1)
+			break ;
 	}
 	free(buffer);
 	return (str);
@@ -92,32 +94,50 @@ char	*read_and_split(int fd)
 
 char	*get_next_line(int fd)
 {
-	char	*result;
-	char	*str;
+	char		*result;
+	static char	*str;
+	char		*temp;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	str = read_and_split(fd);
+	if (!str)
+	{
+		str = read_and_split(fd);
+		if (!str)
+			return (NULL);
+	}
 	result = separator(str);
+	if (!result)
+	{
+		free(str);
+		str = NULL;
+		return (NULL);
+	}
+	temp = str;
 	str = reverse_separator(str);
-	free(str);
+	free(temp);
 	return (result);
 }
 
-int	main(void)
+/*int main(void)
 {
-	int		fd;
-	char	*str = NULL;
+	int fd;
+	char *str;
 
 	fd = open("file.txt", O_RDONLY);
-	str = get_next_line(fd);
-	printf("%s", str);
-	free(str);
-	str = get_next_line(fd);
-	printf("%s", str);
-	free(str);
-	str = get_next_line(fd);
-	printf("%s", str);
-	free(str);
+	if (fd < 0)
+	{
+		printf("Error opening file\n");
+		return (1);
+	}
+
+	while ((str = get_next_line(fd)) != NULL)
+	{
+		printf("%s", str);
+		free(str);
+	}
+	printf("\n");
+	close(fd);
 	return (0);
 }
+*/

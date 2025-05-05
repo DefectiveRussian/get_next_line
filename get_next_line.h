@@ -30,6 +30,9 @@ char	*get_next_line(int fd);
 int		str_chr(char *str);
 char	*str_join2(char *first, char *second);
 size_t	ft_strlen(const char *str);
-void	*ft_calloc(size_t num, size_t dim);
+char	*separator(char *str);
+char	*reverse_separator(char *str);
+char	*read_and_split(int fd);
+char	*handle_read_error(char *buffer, char *str, int bytes_read);
 
 #endif
